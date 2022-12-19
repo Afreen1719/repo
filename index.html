@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watches Comparision</title>
+    <link rel="icon" href="images/mainbg.jpg" type="image/icon type">
+
+    <!---- Font Awesome  ---->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!----  CSS  ---->
+
+    <link href='commerceStyle.css' rel='stylesheet'>
+
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+</head>
+
+<body>
+    <!----  Navigation Bar ---->
+
+    <div class="nav-bar">
+        <div class="title-logo">
+            <h1>eBay Watches</h1>
+        </div>
+        <div class="nav-search-icon">
+            <input type="text" id="myInput" oninput="searchingProducts()" placeholder="Search for products.."
+                title="Type in a product name"><i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+        <div class="nav-items">
+            <a class="nav-item" href="#"> WISHLIST<i class="fa fa-heart-o " aria-hidden="true"><span class="badge animation2"
+                        id="wish_count" style="display:none">1</span></i></a>
+            <a class="nav-item" href="#"> CART<i class="fa fa-shopping-bag " aria-hidden="true"></i></a>
+            <a><i class="fa fa-user" aria-hidden="true"></i>
+                <select class="navigation-user">
+                    <option value="afreen">AFREEN</option>
+                    <option value="afreen">VIJAY</option>
+                </select>
+            </a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!----  Home Content ---->
+
+        <div class="home-content">
+            <div class="home-top-bar">
+                <div class="home-top-info"><small> <a href="homepage.html">HOME </a>/ WATCHES</small></div>
+                <div class="home-top-result"></div>
+                <div class="home-top-filters">
+                    <ul>
+                        <li><a href="#">Sort By</a></li>
+                        <li><a href="#">Ratings</a></li>
+                        <li><a href="#">Price low-High</a></li>
+                        <li><a href="#">Newest First</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!----  Home Middle Content Container ---->
+
+            <div class="home-middle-content">
+
+                <!----    Home Side Navigation Filters   ---->
+
+                <div class="home-side-filters">
+                    <div class="filter-info">
+                        <h3>FILTERS</h3><span class="clear">CLEAR ALL</span>
+                    </div>
+
+                    <!----   Filter Price Information ---->
+                    <details class="filter-price-info">
+                        <summary class="filter-price-head">
+                            <h3>Price</h3>
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </summary>
+                        <div class="filter-price-range">
+                            <div class="filter-input">
+                                <h4>50</h4>
+                                <h4>300</h4>
+                            </div>
+                            <input class="filter-price-slide" type="range">
+                        </div>
+                        <div class="filter-cost">
+                            <h3>$ 49.99</h3>
+                            <h3>$ 300.99</h3>
+                        </div>
+                    </details>
+
+
+                    <!----    Filter Brand Information --->
+
+                    <details class="filter-brand-info">
+                        <summary class="filter-brand-head">
+                            <h3>Brand</h3>
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </summary>
+                        <div class="filter-brand-lists">
+                            <div class="filter-brands">
+                                <ul>
+                                    <li><input type="checkbox" value="Apple">
+                                        <label>Apple</label>
+                                    </li>
+                                    <li><input type="checkbox" value="Asus">
+                                        <label>Allen Solly</label>
+                                    </li>
+                                    <li><input type="checkbox" value="Lenovo">
+                                        <label>Casio</label>
+                                    </li>
+                                    <li><input type="checkbox" value="Xiaomi">
+                                        <label>Timex</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="filter-brands">
+                                <ul>
+                                    <li><input type="checkbox" value="Sony">
+                                        <label>Fastrack</label>
+                                    </li>
+                                    <li><input type="checkbox" value="LG">
+                                        <label>Daniel</label>
+                                    </li>
+                                    <li><input type="checkbox" value="Honor">
+                                        <label>Sonata</label>
+                                    </li>
+                                    <li><input type="checkbox" value="Meizu">
+                                        <label>Fossil</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <!---- Cards Container ---->
+
+                <div class="home-cards-container">
+                </div>
+
+                <!---- DialogBox Container ---->
+
+                <div id="modalBox" class="modal">
+                    <div class="modal-content">
+                        <span class="modal-close">&times;</span>
+                        <div class="modal-name"></div>
+                        <div class="modal-image"></div>
+                        <div id="modal-description"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!----  Cards Load More ---->
+
+            <div class="cards-load-more">
+                <i class="fa fa-circle-o-notch fa-2x" aria-hidden="true"></i>
+                <button TYPE="submit">LOAD MORE </button>
+            </div>
+
+            <!--- Comparision Bar -->
+
+            <div id="home-comparision-bar">
+                <div>
+                    <span id="modalcomp-close">&times;</span>
+                </div>
+                <div class="compare-section">
+                    <span class="compare-title">
+                        <h4> Compare </h4>
+                        <p> Add upto 5 products </p>
+                        <div class="compare-count"> </div>
+                    </span>
+                    <span class="compare-list">
+                    </span>
+                    <span id="compare-btn">
+                        <button type="button" onclick="showCompareproductView()">compare</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compare Products View-->
+
+        <div class="compare-products">
+            <div>
+                <h3> Comparison View
+                    <span id="modal-close" onclick="showHomeView()">&times;</span>
+                </h3>
+            </div>
+            <div class="row">
+                <div class="compare-features">
+                    <div class="compare-name">
+                        <h4> Name </h4>
+                    </div>
+                    <div class="compare-img">
+                        <h4> Image </h4>
+                    </div>
+                    <div>
+                        <h4> Price </h4>
+                    </div>
+                    <div>
+                        <h4> Water Resistent </h4>
+                    </div>
+                    <div>
+                        <h4> Display Type </h4>
+                    </div>
+                    <div>
+                        <h4> Watch Type </h4>
+                    </div>
+                    <div>
+                        <h4> Strap Material </h4>
+                    </div>
+                    <div>
+                        <h4> Dial Color </h4>
+                    </div>
+                    <div>
+                        <h4> Diameter </h4>
+                    </div>
+                </div>
+                <div class="compare-values">
+
+                </div>
+                <!-- <div class="col-4"></div>
+                <div class="col-4"></div>
+                <div class="col-4"></div>
+                <div class="col-4"></div> -->
+            </div>
+        </div>
+
+    </div>
+
+    <!----  Footer Section ---->
+
+    <footer>
+        <div class="footertop foot">
+            <div class="footer-head">
+                <h5>LET’S STAY IN TOUCH</h5>
+                <p>Get updates on sales specials and more</p>
+            </div>
+            <div class="footer-email">
+                <input placeholder="Email address" /><span>SUBSCRIBE</span>
+            </div>
+            <div class="footer-followpage">
+                <h5>FOLLOW US.</h5>
+                <p>We want to hear from you</p>
+            </div>
+            <div class="footer-icons">
+                <em class="fa fa-facebook-square fa-lg"></em>
+                <em class="fa fa-twitter fa-lg"></em>
+                <em class="fa fa-youtube-play fa-lg"></em>
+                <em class="fa fa-instagram fa-lg"></em>
+            </div>
+        </div>
+        <div class="footer-line"></div>
+        <div class="footermid foot">
+            <div class="footer-lists">
+                <div class="footer-about contact">
+                    <h6>ABOUT</h6>
+                    <ul>
+                        <li>About Us</li>
+                        <li>Careers</li>
+                        <li>Blog</li>
+                        <li>News</li>
+                    </ul>
+                </div>
+                <div class="footer-support contact">
+                    <h6>SUPPORT</h6>
+                    <ul>
+                        <li>Payment</li>
+                        <li>Shipping</li>
+                        <li>Cancellation & Returns</li>
+                        <li>FAQs</li>
+                    </ul>
+                </div>
+                <div class="footer-policy contact">
+                    <h6>POLICY</h6>
+                    <ul>
+                        <li>Terms of Use</li>
+                        <li>Privacy Policy</li>
+                        <li>Intellectual Property</li>
+                        <li>Sitemap</li>
+                        <li>Security</li>
+                    </ul>
+                </div>
+                <div class="footer-mail contact">
+                    <h6>MAIL US</h6>
+                    <p>17187 N. Laurel Park Dr., Ste. 110 Livonia, MI 48152 USA</p>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h5>1800 123 4567</h5>
+                <p class="footer-service">Service hours: 09:00-21:00</p>
+                <div class="footer-chat">
+                    <button type="submit">CHAT SUPPORT</button>
+                </div>
+                <div class="footer-payment">
+                    <h6>PAYMENT METHODS</h6>
+                    <div class="payment-icons">
+                        <img src="images/icon1.png" alt="Image not found">
+                        <img src="images/icon2.png" alt="Image not found">
+                        <img src="images/icon3.png" alt="Image not found">
+                        <img src="images/icon4.png" alt="Image not found">
+                        <img src="images/icon5.png" alt="Image not found">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-line"></div>
+        <div class="footerbottom foot">
+            <p>Copyright © 2021 - 2022 commerce factory. All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+
+<script src="js/commercejs.js"> </script>
+
+</html>
